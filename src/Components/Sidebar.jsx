@@ -6,7 +6,7 @@ function Sidebar(props) {
     <>
       <div
         class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar"
-        style={{ width: "280px" }}
+        style={{ width: "200px" }}
       >
         <a
           href="/"
@@ -15,7 +15,7 @@ function Sidebar(props) {
           <svg class="bi pe-none me-2" width="40" height="32">
             <use xlinkHref="#bootstrap"></use>
           </svg>
-          <span class="fs-4">Sidebar</span>
+          <span class="fs-4">Friendship</span>
         </a>
         <hr />
         <ul class="nav nav-pills flex-column mb-auto">

@@ -6,8 +6,8 @@ function PostList() {
   const { postlist } = useContext(Postlistcontext);
   return (
     <>
-      {postlist.map((post) => (
-        <Post key={post.id} post={post} />
+      {postlist.map((post, index) => (
+        <Post key={post.id} post={post} index={index} />
       ))}
     </>
   );

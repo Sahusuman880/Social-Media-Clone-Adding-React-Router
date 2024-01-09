@@ -45,19 +45,28 @@ function App() {
     <>
       <PostListProvider>
         <div className="app-container">
-          <Sidebar
-            selectedTab={selectedTab}
-            setSelectedTab={setSelectedTab}
-          ></Sidebar>
-          <div className="content">
-            <Header></Header>
-            {selectedTab === "Home" ? (
-              <PostList></PostList>
-            ) : (
-              <CreatePost></CreatePost>
-            )}
+          <div className="sidebars">
+            <Sidebar
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+            ></Sidebar>
+          </div>
 
-            <Footer></Footer>
+          <div className="content">
+            <div className="Header">
+              <Header></Header>
+            </div>
+
+            <div className="innercontent">
+              {selectedTab === "Home" ? (
+                <PostList></PostList>
+              ) : (
+                <CreatePost></CreatePost>
+              )}
+            </div>
+            <div className="Footer">
+              <Footer></Footer>
+            </div>
           </div>
         </div>
       </PostListProvider>
