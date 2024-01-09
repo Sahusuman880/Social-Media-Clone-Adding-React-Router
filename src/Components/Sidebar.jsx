@@ -1,4 +1,7 @@
 function Sidebar(props) {
+  const handleOnClick = (tabName) => {
+    props.setSelectedTab(tabName);
+  };
   return (
     <>
       <div
@@ -16,7 +19,12 @@ function Sidebar(props) {
         </a>
         <hr />
         <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
+          <li
+            class="nav-item"
+            onClick={() => {
+              handleOnClick("Home");
+            }}
+          >
             <a
               href="#"
               class={`nav-link  ${
@@ -30,7 +38,11 @@ function Sidebar(props) {
               Home
             </a>
           </li>
-          <li>
+          <li
+            onClick={() => {
+              handleOnClick("Create Post");
+            }}
+          >
             <a
               href="#"
               class={`nav-link  ${
