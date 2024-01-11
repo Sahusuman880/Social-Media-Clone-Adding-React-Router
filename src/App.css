@@ -43,3 +43,6 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+.spinner{
+  margin: 10% 0;
+}
