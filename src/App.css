@@ -9,12 +9,7 @@
   
   min-height: 100%;
 }
-.sidebars{
-  position: sticky;
-  left: 0px;
-  top: 0px;
-  
-}
+
 .Header{
   position: sticky;
   top: 0px;
@@ -22,13 +17,14 @@
 }
 .Footer{
   position: sticky;
- bottom: 0px;
+ bottom: -14px;
   width:100%;
   
   background-color: rgb(215, 211, 211);
 }
 .post-card{
   margin: 20px 10px;
+
   
 }
 .tags{
@@ -44,6 +40,6 @@
 .innercontent{
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }

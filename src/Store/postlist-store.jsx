@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 export const Postlistcontext = createContext({
   postlist: [],
   addPost: () => {},
+  addInitialPosts: () => {},
   deletePost: () => {},
 });
 
@@ -26,26 +27,15 @@ function postListReducer(currentPostList, action) {
     newPost.splice(action.payload.index, 1);
     newPostList = [...newPost];
   }
+
+  if (action.type === "ADD_INITIAL_ITEM") {
+    newPostList = action.payload.posts;
+  }
   return newPostList;
 }
 
 const PostListProvider = (props) => {
-  const [postlist, dispatchPostlist] = useReducer(postListReducer, [
-    {
-      title: "Going to Mumbai",
-      body: "Hii friends i am going to mumbai for my vacation",
-      reactions: 2,
-      userId: "user-9",
-      tags: ["vacation", "Mumbai", "enjoying"],
-    },
-    {
-      title: "Pass Hogaye bhai",
-      body: "4 sall ki masti ke bad bhi pass hogaye.Hard to belive",
-      reactions: 5,
-      userId: "user-10",
-      tags: ["Pass", "MCA", "4 Saal"],
-    },
-  ]);
+  const [postlist, dispatchPostlist] = useReducer(postListReducer, []);
   const addPost = (userId, title, body, reactions, tags) => {
     console.log(userId, title, body, reactions, tags);
     dispatchPostlist({
@@ -59,6 +49,15 @@ const PostListProvider = (props) => {
       },
     });
   };
+
+  const addInitialPosts = (posts) => {
+    dispatchPostlist({
+      type: "ADD_INITIAL_ITEM",
+      payload: {
+        posts,
+      },
+    });
+  };
   const deletePost = (index) => {
     dispatchPostlist({
       type: "DELETE_ITEM",
@@ -69,7 +68,9 @@ const PostListProvider = (props) => {
   };
 
   return (
-    <Postlistcontext.Provider value={{ postlist, addPost, deletePost }}>
+    <Postlistcontext.Provider
+      value={{ postlist, addPost, addInitialPosts, deletePost }}
+    >
       {props.children}
     </Postlistcontext.Provider>
   );
