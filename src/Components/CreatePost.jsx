@@ -20,7 +20,22 @@ function CreatePost() {
     postbody.current.value = "";
     postreactions.current.value = "";
     posttag.current.value = "";
-    addPost(userId, title, body, reactions, tags);
+    fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title,
+        body,
+        reactions,
+        userId,
+        tags,
+      }),
+    })
+      .then((res) => res.json())
+      .then((post) => {
+        // console.log(post);
+        addPost(post);
+      });
   }
 
   return (
