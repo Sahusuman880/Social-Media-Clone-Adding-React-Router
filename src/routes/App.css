@@ -6,8 +6,9 @@
   width: 86%;
 }
 .sidebar{
+ 
+  min-height: 100vh;
   
-  min-height: 100%;
 }
 
 .Header{

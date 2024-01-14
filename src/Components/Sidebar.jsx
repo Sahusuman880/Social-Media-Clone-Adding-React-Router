@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Sidebar(props) {
   const handleOnClick = (tabName) => {
     props.setSelectedTab(tabName);
@@ -19,41 +21,21 @@ function Sidebar(props) {
         </a>
         <hr />
         <ul class="nav nav-pills flex-column mb-auto">
-          <li
-            class="nav-item"
-            onClick={() => {
-              handleOnClick("Home");
-            }}
-          >
-            <a
-              href="#"
-              class={`nav-link  ${
-                props.selectedTab === "Home" ? "active" : "text-white"
-              }`}
-              aria-current="page"
-            >
+          <li class="nav-item">
+            <Link to="/" class="nav-link text-white" aria-current="page">
               <svg class="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#home"></use>
               </svg>
               Home
-            </a>
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              handleOnClick("Create Post");
-            }}
-          >
-            <a
-              href="#"
-              class={`nav-link  ${
-                props.selectedTab === "Create Post" ? "active" : "text-white"
-              }`}
-            >
+          <li>
+            <Link to="/create-post" class="nav-link text-white">
               <svg class="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#speedometer2"></use>
               </svg>
               Create Post
-            </a>
+            </Link>
           </li>
         </ul>
         <hr />
@@ -71,7 +53,7 @@ function Sidebar(props) {
               height="32"
               class="rounded-circle me-2"
             />
-            <strong>mdo</strong>
+            <strong>Suman</strong>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li>

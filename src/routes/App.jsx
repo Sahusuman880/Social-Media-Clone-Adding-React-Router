@@ -2,12 +2,13 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
-import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-import Sidebar from "./Components/Sidebar";
-import CreatePost from "./Components/CreatePost";
-import PostList from "./Components/PostList";
-import PostListProvider from "./Store/postlist-store";
+import Header from "../Components/Header";
+import Footer from "../Components/Footer";
+import Sidebar from "../Components/Sidebar";
+import CreatePost from "../Components/CreatePost";
+import PostList from "../Components/PostList";
+import PostListProvider from "../Store/postlist-store";
+import { Outlet } from "react-router-dom";
 
 // function App() {
 //   const [count, setCount] = useState(0)
@@ -56,14 +57,10 @@ function App() {
             <div className="Header">
               <Header></Header>
             </div>
-
             <div className="innercontent">
-              {selectedTab === "Home" ? (
-                <PostList></PostList>
-              ) : (
-                <CreatePost></CreatePost>
-              )}
+              <Outlet></Outlet>
             </div>
+
             <div className="Footer">
               <Footer></Footer>
             </div>
