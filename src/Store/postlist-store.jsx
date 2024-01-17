@@ -1,11 +1,11 @@
 import { createContext, useReducer, useState, useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 
 export const Postlistcontext = createContext({
   postlist: [],
   addPost: () => {},
 
   deletePost: () => {},
-  Fetching: false,
 });
 
 function postListReducer(currentPostList, action) {
@@ -37,7 +37,7 @@ function postListReducer(currentPostList, action) {
 
 const PostListProvider = (props) => {
   const [postlist, dispatchPostlist] = useReducer(postListReducer, []);
-  const [Fetching, setFetching] = useState(false);
+  // const [Fetching, setFetching] = useState(false);
 
   const addPost = (post) => {
     console.log(post);
@@ -64,26 +64,24 @@ const PostListProvider = (props) => {
     });
   };
 
-  useEffect(() => {
-    setFetching(true);
-    const controller = new AbortController();
-    const signal = controller.signal;
-    fetch("https://dummyjson.com/posts", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        setFetching(false);
-      });
+  // useEffect(() => {
+  //   setFetching(true);
+  //   const controller = new AbortController();
+  //   const signal = controller.signal;
+  //   fetch("https://dummyjson.com/posts", { signal })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       addInitialPosts(data.posts);
+  //       setFetching(false);
+  //     });
 
-    return () => {
-      controller.abort();
-    };
-  }, []);
+  //   return () => {
+  //     controller.abort();
+  //   };
+  // }, []);
 
   return (
-    <Postlistcontext.Provider
-      value={{ postlist, addPost, deletePost, Fetching }}
-    >
+    <Postlistcontext.Provider value={{ postlist, addPost, deletePost }}>
       {props.children}
     </Postlistcontext.Provider>
   );
